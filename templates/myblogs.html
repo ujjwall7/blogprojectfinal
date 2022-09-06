@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block bgimage %} {% static 'assets/img/home-bg.jpg' %} {% endblock bgimage %}
+
+{% block heading %}MY-BLOGS{% endblock heading %}
+
+{% block Bootstrap %}
+    MY BLOG
+{% endblock Bootstrap %}
+    
+{% block front %}
+    
+
+ <center>   
+    <a  href="{% url 'about' %}" >All Blogs</a>
+    
+    {% for category in categories %}
+        <a href="/?category={{category.id}}">{{category.Categoryname}}</a>
+    
+    {% endfor %}</center>
+
+       
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                   
+                   {% if post %}           
+                   {% for post in post %}
+                    
+
+                   <div class="post-preview">
+                    <a href="{% url 'read' post.id %}">
+                        <h2 class="post-title">{{post.Title}}</h2>
+                        <h3 class="post-subtitle">{{post.Description | truncatewords:30}}</h3>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!">{{post.Author}}</a>
+                        on date {{post.Pub_date |date:"F j, Y" }}
+                    </p>
+                </div>
+
+
+                   {% endfor %}
+                    
+                   {% endif %}
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                </div>
+            </div>
+        </div>
+     
+        {% endblock front %} 

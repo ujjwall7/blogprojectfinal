@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% for post in post %}
+    
+{% block heading %}{{post.Title}}{% endblock heading %}
+{% block bgimage %} {{post.Image.url}} {% endblock bgimage %}
+
+
+
+
+
+{% block front %}
+    
+<div class="post-preview">
+    <a href="{% url 'fdepth' post.id %}">
+       <center> <h2 class="post-title">{{post.Title}}</h2></center>
+       <br><br>
+       <div class="container">
+       {{post.Description}}
+
+       
+    </a>
+    <p class="post-meta">
+        Posted by
+        <a href="#!">{{post.Author}}</a>
+        on date {{post.Pub_date |date:"F j, Y" }}
+      </div>
+    </p>
+</div>
+        {% endblock front %} 
+
+
+{% endfor %}

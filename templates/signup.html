@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign_up</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="{% static 'text/css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+</head>
+<body style="background-image: url('../static/assets/perceptual-standard.jpg'); background:cover; background-repeat: no-repeat;">
+    
+{% load crispy_forms_tags %}
+<nav> &nbsp;&nbsp;&nbsp;
+    <a href="{% url 'front' %}" style=" font-weight: bold; color: white;"><b>Home</b></a>&nbsp;
+    <a href="{% url 'sign_up' %}" style=" font-weight: bold; color: white"><b>Register</b></a>&nbsp;
+    <a href="{% url 'login' %}" style=" font-weight: bold; color: white"><b>Login</b></a>&nbsp;
+</nav>
+
+
+                        <center><H1 style="color: white;"><b>Sign_Up</b></H1></center>
+ <center>                       
+    <form action="" method="post" novalidate style="display: inline-block;
+    font-size: revert;
+    color: white;
+    font-size: large;
+">
+        {% csrf_token %}
+
+        {% for fm in form %}
+
+        <center>
+            <b>{{fm.label_tag}}</b> {{fm}} {{fm.errors|striptags}} <br><br>
+        </center>
+        {% endfor %}
+
+        <!-- {{form.as_p}} -->
+
+
+
+
+        {% if messages %}
+
+        {% for message in messages %}
+        <small>{{message}}</small>
+        {% endfor %}
+
+        {% endif %}
+
+
+        <center>
+            <button type="submit" value="Submit" style="border-radius: 5px;">Submit</button>
+
+        </center>
+    </form>
+    <br>
+     <!-- <center><a href="{% url 'login' %}">login</a></center> -->
+
+</body>
+</html>

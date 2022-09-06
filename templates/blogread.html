@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% for post in post %}
+    
+{% block heading %}{{post.Title}}{% endblock heading %}
+{% block bgimage %} {{post.Image.url}} {% endblock bgimage %}
+
+
+{% block Edit %}
+
+
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'update' id=post.id %}">EDIT</a></li>
+  
+
+{% endblock Edit %}
+
+
+
+
+{% block destroy %}
+
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'destroy' id=post.id %}">DELETE</a></li>
+
+
+{% endblock destroy %}
+
+
+
+
+{% block front %}
+    
+<div class="post-preview">
+    <a href="{% url 'fdepth' post.id %}">
+       <center> <h2 class="post-title">{{post.Title}}</h2></center>
+       <br><br>
+       <div class="container">
+       {{post.Description}}
+
+       
+    </a>
+    <p class="post-meta">
+        Posted by
+        <a href="#!">{{post.Author}}</a>
+        on date {{post.Pub_date |date:"F j, Y" }}
+      </div>
+    </p>
+</div>
+        {% endblock front %} 
+
+
+{% endfor %}
