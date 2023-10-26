@@ -1,11 +1,5 @@
-from email.message import EmailMessage
-from email.mime import image
-import imghdr
-from re import T
-from tkinter import Image
-from django.db import models
 from django.contrib.auth.models import User
-
+from django.db import models
 
 
 class Category(models.Model):
